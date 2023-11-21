@@ -1,0 +1,28 @@
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() {
+  if(Serial.available()>0) {
+     String a = Serial.readString();
+     if ( a == "Holaa") {
+        digitalWrite(LED_BUILTIN, HIGH);
+        delay(100);
+        digitalWrite(LED_BUILTIN, LOW);
+        delay(500);
+      } else if (a == "Hola0) {
+        digitalWrite(LED_BUILTIN, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        delay(500);
+      } else {
+        digitalWrite(LED_BUILTIN, LOW);
+        delay(100);
+        digitalWrite(LED_BUILTIN, HIGH);
+        delay(500);
+  
+  //Serial.print(Serial.readString());
+  
+ }
+}
