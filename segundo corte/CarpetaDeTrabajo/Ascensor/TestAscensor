@@ -1,0 +1,19 @@
+class TestAscensor {
+    public static void mostrarPiso(int piso) {
+        System.out.println("El ascensor se encuentra en el piso " + piso);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Usuario usuario = new Usuario();
+        Ascensor ascensor = new Ascensor();
+
+        while (true) {
+            int pisoDestino = usuario.solicitarPiso();
+            String recorrido = ascensor.moverA(pisoDestino);
+            Visualizar.mostrarPiso(ascensor.getPisoActual());
+            System.out.println(recorrido);
+        }
+    }
+}
