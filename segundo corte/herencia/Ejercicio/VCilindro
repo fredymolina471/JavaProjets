@@ -1,0 +1,15 @@
+package ejemplo;
+
+public class VCilindro extends ACirculo {
+    private double altura;
+
+    public VCilindro (double r, double altura){
+      super (r);
+      this.altura = altura; 
+  }
+
+  public double calcularVCil(){
+    double vc=return calcularAreaC() * altura;
+    return vc
+  }
+}
