@@ -1,0 +1,39 @@
+class Ascensor {
+    private int pisoActual;
+    private StringBuilder recorrido;
+
+    public Ascensor() {
+        
+        Random random = new Random();
+        pisoActual = (random.nextInt(3) + 2) * 2;
+        recorrido = new StringBuilder("Recorrido: " + pisoActual);
+    }
+
+    public int getPisoActual() {
+        return pisoActual;
+    }
+
+    public String moverA(int pisoDestino) {
+        if (pisoDestino < 1 || pisoDestino > 7 || pisoDestino % 2 != 0) {
+            return "Piso no válido. Debe ser un número par";
+        }
+
+        StringBuilder resultado = new StringBuilder();
+
+        while (pisoActual != pisoDestino) {
+            if (pisoActual < pisoDestino) {
+                pisoActual += 2; 
+            } else {
+                pisoActual -= 2; 
+            }
+            resultado.append(" -> ").append(pisoActual);
+        }
+
+        recorrido.append(resultado);
+        return resultado.toString();
+    }
+
+    public String getRecorrido() {
+        return recorrido.toString();
+    }
+}
