@@ -1,0 +1,85 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class CalculadoraGUI extends JFrame implements ActionListener {
+    private JTextField num1Field, num2Field, resultField;
+    private JButton sumButton, subtractButton, multiplyButton, divideButton, percentageButton;
+
+    public CalculadoraGUI() {
+        setTitle("Calculadora");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(6, 2));
+
+        JLabel num1Label = new JLabel("Número 1:");
+        num1Field = new JTextField();
+        JLabel num2Label = new JLabel("Número 2:");
+        num2Field = new JTextField();
+        JLabel resultLabel = new JLabel("Resultado:");
+        resultField = new JTextField();
+        resultField.setEditable(false);
+
+        sumButton = new JButton("Sumar");
+        subtractButton = new JButton("Restar");
+        multiplyButton = new JButton("Multiplicar");
+        divideButton = new JButton("Dividir");
+        percentageButton = new JButton("Porcentaje");
+
+        sumButton.addActionListener(this);
+        subtractButton.addActionListener(this);
+        multiplyButton.addActionListener(this);
+        divideButton.addActionListener(this);
+        percentageButton.addActionListener(this);
+
+        add(num1Label);
+        add(num1Field);
+        add(num2Label);
+        add(num2Field);
+        add(resultLabel);
+        add(resultField);
+        add(sumButton);
+        add(subtractButton);
+        add(multiplyButton);
+        add(divideButton);
+        add(percentageButton);
+
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        try {
+            double num1 = Double.parseDouble(num1Field.getText());
+            double num2 = Double.parseDouble(num2Field.getText());
+            double result = 0.0;
+
+            if (e.getSource() == sumButton) {
+                result = num1 + num2;
+            } else if (e.getSource() == subtractButton) {
+                result = num1 - num2;
+            } else if (e.getSource() == multiplyButton) {
+                result = num1 * num2;
+            } else if (e.getSource() == divideButton) {
+                if (num2 != 0) {
+                    result = num1 / num2;
+                } else {
+                    resultField.setText("Error: División por cero");
+                    return;
+                }
+            } else if (e.getSource() == percentageButton) {
+                result = (num1 * num2) / 100.0;
+            }
+
+            resultField.setText(Double.toString(result));
+        } catch (NumberFormatException ex) {
+            resultField.setText("Error: Ingresa números válidos");
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new CalculadoraGUI();
+        });
+    }
+}
