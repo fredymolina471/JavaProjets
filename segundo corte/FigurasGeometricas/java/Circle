@@ -1,0 +1,22 @@
+public class Circle {
+    private double pi = 3.14;
+    private double radius;
+
+    public Circle(double diameter) {
+        this.radius = diameter / 2;
+    }
+
+    public double area() {
+        return this.pi * Math.pow(this.radius, 2);
+    }
+
+    public double perimeter() {
+        return this.pi * 2 * this.radius;
+    }
+
+    public static void main(String[] args) {
+        Circle mediumPizza = new Circle(12);
+        System.out.println("Area media pizza: " + mediumPizza.area());
+        System.out.println("Perimetro media pizza: " + mediumPizza.perimeter());
+    }
+}
