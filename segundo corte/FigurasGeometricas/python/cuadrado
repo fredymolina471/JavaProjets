@@ -1,0 +1,9 @@
+class Cuadrado:
+    def _init_(self, lado):
+        self.lado = lado
+
+    def calcular_area(self):
+        return self.lado * self.lado
+
+mi_cuadrado = Cuadrado(5)
+print(f"El área del cuadrado es: {mi_cuadrado.calcular_area()}")
